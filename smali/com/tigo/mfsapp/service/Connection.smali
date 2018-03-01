@@ -904,7 +904,7 @@
 .method public requestBalance(Ljava/lang/String;Ljava/lang/Float;)V
     .locals 4
     .param p1, "PINCode"    # Ljava/lang/String;
-    .param p2, "fee"    # Ljava/lang/Float;
+   # .param p2, "fee"    # Ljava/lang/Float;
 
     .prologue
     .line 314
@@ -931,36 +931,14 @@
 
     move-result v2
 
-    if-nez v2, :cond_0
+  
 
     .line 318
     const-string v2, "PINCode"
 
     invoke-virtual {v0, v2, p1}, Lcom/tigo/mfsapp/service/JsonParameters;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 321
-    :cond_0
-    const-string v2, "Fee"
-
-    invoke-virtual {v0, v2, p2}, Lcom/tigo/mfsapp/service/JsonParameters;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 323
-    new-instance v1, Lcom/tigo/mfsapp/service/BalanceRequest;
-
-    iget-object v2, p0, Lcom/tigo/mfsapp/service/Connection;->poolExecutor:Ljava/util/concurrent/ExecutorService;
-
-    invoke-direct {v1, v2}, Lcom/tigo/mfsapp/service/BalanceRequest;-><init>(Ljava/util/concurrent/ExecutorService;)V
-
-    .line 325
-    .local v1, "request":Lcom/tigo/mfsapp/service/BalanceRequest;
-    invoke-virtual {v1, v0}, Lcom/tigo/mfsapp/service/BalanceRequest;->setJsonParameters(Lcom/tigo/mfsapp/service/JsonParameters;)V
-
-    .line 326
-    invoke-virtual {v1, p0}, Lcom/tigo/mfsapp/service/BalanceRequest;->setRequestListener(Lcom/tigo/mfsapp/service/Request$RequestListener;)V
-
-    .line 327
-    invoke-virtual {v1}, Lcom/tigo/mfsapp/service/BalanceRequest;->run()V
-
+   
     .line 328
     return-void
 .end method
